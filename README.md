@@ -29,8 +29,12 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-1. Put your PDFs in `data/documents/`. The evaluation questions expect the course file named
-   `RAG_Detailed.pdf` there. For more documents: `python download_papers.py`
+1. 1.	Download the five optional research papers with `python download_papers.py`.
+The supplied evaluation set also contains questions labelled against `RAG_Detailed.pdf`.
+If that course PDF is absent, `evaluate.py` automatically skips those questions rather
+than failing. To obtain retrieval metrics, use evaluation questions labelled for PDFs
+that are actually indexed.
+
 2. Run:
 ```bash
 python build_index.py
