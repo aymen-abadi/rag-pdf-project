@@ -1,0 +1,6 @@
+.venv/
+__pycache__/
+data/documents/*.pdf
+rag_index.faiss
+chunks.json
+results.json
