@@ -1,0 +1,113 @@
+[
+  {
+    "question": "What two techniques does Retrieval-Augmented Generation combine?",
+    "reference": "Information retrieval and text generation.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 4
+      }
+    ]
+  },
+  {
+    "question": "Why is RAG useful?",
+    "reference": "It uses your own documents, gives related context, makes answers verifiable and allows updates without retraining.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 6
+      }
+    ]
+  },
+  {
+    "question": "Why should documents be split into chunks?",
+    "reference": "One embedding for a whole document does not represent specific passages well; chunks can be retrieved independently.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 16
+      }
+    ]
+  },
+  {
+    "question": "What chunk size and overlap does the guide use as starting values?",
+    "reference": "900 characters with 150 characters of overlap.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 17
+      },
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 40
+      }
+    ]
+  },
+  {
+    "question": "What is an embedding?",
+    "reference": "A numerical vector representing a piece of text.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 20
+      }
+    ]
+  },
+  {
+    "question": "Which FAISS index performs exact inner-product search?",
+    "reference": "IndexFlatIP.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 23
+      },
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 24
+      }
+    ]
+  },
+  {
+    "question": "Which language model does the guide demonstrate for generation?",
+    "reference": "Qwen/Qwen2.5-3B-Instruct.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 28
+      },
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 29
+      }
+    ]
+  },
+  {
+    "question": "How is Mean Reciprocal Rank computed?",
+    "reference": "The average over questions of 1 / rank of the first relevant result.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 36
+      }
+    ]
+  },
+  {
+    "question": "What should you do if the extracted text is empty?",
+    "reference": "Check whether the PDF is scanned and use OCR if needed.",
+    "relevant": [
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 15
+      },
+      {
+        "source": "RAG_Detailed.pdf",
+        "page": 41
+      }
+    ]
+  },
+  {
+    "question": "What is the capital of Australia?",
+    "reference": "Not in the documents: the system should say there is not enough information.",
+    "relevant": []
+  }
+]

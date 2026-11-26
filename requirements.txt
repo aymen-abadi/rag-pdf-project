@@ -1,0 +1,7 @@
+pymupdf
+sentence-transformers
+faiss-cpu
+transformers>=4.56
+accelerate
+torch
+numpy
