@@ -39,13 +39,30 @@ def main():
         questions = json.load(f)
     retriever = Retriever()
     indexed = {c["source"] for c in retriever.chunks}
-    missing = {r["source"] for q in questions for r in q["relevant"]} - indexed
-    if missing:
-        raise SystemExit(f"These labelled PDFs are not in the index: {sorted(missing)}")
+    # Keep the evaluation usable when optional/course PDFs are absent.
+    # Questions whose labelled source is not indexed cannot be scored fairly,
+    # so skip them instead of treating them as unanswerable.
+    available_questions = []
+    skipped_questions = []
+    for q in questions:
+        required_sources = {r["source"] for r in q["relevant"]}
+        missing_sources = required_sources - indexed
+        if missing_sources:
+            skipped_questions.append((q["question"], sorted(missing_sources)))
+        else:
+            available_questions.append(q)
+
+    if skipped_questions:
+        print("Skipping questions whose reference PDFs are not indexed:")
+        for question, sources in skipped_questions:
+            print(f"  - {question} (missing: {', '.join(sources)})")
+    if not any(q["relevant"] for q in available_questions):
+        print("WARNING: no answerable evaluation questions remain; retrieval metrics will not be calculated.")
+
     generator = Generator(args.model) if args.generate else None
 
     rows, metrics = [], []
-    for q in questions:
+    for q in available_questions:
         start = time.time()
         results = retriever.retrieve(q["question"], args.top_k)
         retrieved = [(c["source"], c["page"]) for c in results]
